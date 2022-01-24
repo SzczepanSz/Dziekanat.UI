@@ -55,18 +55,25 @@ namespace Dziekanat.Controller
             _dbcontextfactory.DELETEShoolSubject(idSubjects);
         }
 
-        public List<Student> AddEmptyRow()
+        public List<Student> AddEmptyRowStudent()
         {
          //   Student emptyStudent = new Student();
             var tempList = _dbcontextfactory.GetAllStudents();
             tempList.Add(new Student());
             return tempList; 
         }
+        public List<Subject> AddEmptyRowSubject()
+        {
+            //   Student emptyStudent = new Student();
+            var tempList = _dbcontextfactory.GetAllSubject();
+            tempList.Add(new Subject());
+            return tempList;
+        }
 
 
         public bool IsString(string text)
         {
-            return _inputVerifier.IsString(text);
+            return text != null ? _inputVerifier.IsString(text) : false;
         }
 
         public bool IsLongString(string text)

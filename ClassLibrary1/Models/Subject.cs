@@ -13,7 +13,6 @@ namespace Dziekanat.DAL.Models
         public int IdSubject { get; set; }
         public string SubjectName { get; set; }
         public int Semester { get; set; }
-        public double PESEL { get; set; }
         public string Lecturer { get; set; }
     }
 }

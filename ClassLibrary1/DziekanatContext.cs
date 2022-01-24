@@ -102,9 +102,9 @@ namespace Dziekanat.DAL
         {
             var storedList = new List<Subject>
             {
-                    new Subject() { Lecturer = "Twoja Stara" },
-                    new Subject() { Lecturer = "Moja Staara" },
-                    new Subject() { Lecturer = "Staara" }
+                    new Subject() { Lecturer = "Przemysław Martyniuk", SubjectName = "OOP" ,Semester = 6  },
+                    new Subject() { Lecturer = "Kamil Budzisz" , SubjectName = "CNC MAchining",Semester = 3},
+                    new Subject() { Lecturer = "Olek Staszkin" , SubjectName = "Chemistry", Semester = 2}
             };
 
 
@@ -119,9 +119,9 @@ namespace Dziekanat.DAL
         {
             var storedList = new List<Student>
             {
-                    new Student() {  Name="Martin" },
-                    new Student() { Name ="Scorsese" },
-                    new Student() {  Name="Richi" }
+                    new Student() {  Name="Martin" , SurName ="Ricki", PESEL = 85432305839},
+                    new Student() { Name ="Scorsese", SurName = "Don" , PESEL = 75432305839},
+                    new Student() {  Name="Richi" , SurName = "Kojote", PESEL= 65432305839} 
             };
             foreach (var game in storedList)
             {

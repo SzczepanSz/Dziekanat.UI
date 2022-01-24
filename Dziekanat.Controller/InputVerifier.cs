@@ -15,9 +15,9 @@ namespace Dziekanat.Controller
         private string patternName = "^[A-Z]+$";
         private string patternNameTwo = "^[A-Za-z]+$";
 
-        private string patternPESEL = "^[0-9]{11}$";
+        private string patternPESEL = "^[0-9]+$";
 
-        private string patternSemester = "^[0-9]{2}$";
+        private string patternSemester = "^[0-9]+$";
 
       //  private string patternLong = @"\b\d+\,\d{3}\b";
        private string patternLong = @"\bthe\w*\b";

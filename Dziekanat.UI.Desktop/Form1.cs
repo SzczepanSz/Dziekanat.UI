@@ -37,6 +37,9 @@ namespace Dziekanat.UI.Desktop
         {
             dgvStudents.CellEndEdit += DgvStudents_CellEndEdit;
             dgvStudents.EditingControlShowing += dataGridView1_EditingControlShowing;
+
+            dgvSubjects.CellEndEdit += DgvStudents_CellEndEdit;
+            dgvSubjects.EditingControlShowing += dataGridView1_EditingControlShowing;
         }
 
         private void LayoutInit()
@@ -53,13 +56,13 @@ namespace Dziekanat.UI.Desktop
 
 
             dgvStudents.MaximumSize = new Size() { Height = 370, Width = 580 };
-            dGVSubjects.MaximumSize = new Size() { Height = 370, Width = 580 };
+            dgvSubjects.MaximumSize = new Size() { Height = 370, Width = 580 };
 
             dgvStudents.Dock = DockStyle.Fill;
-            dGVSubjects.Dock = DockStyle.Fill;
+            dgvSubjects.Dock = DockStyle.Fill;
 
             dgvStudents.EditMode = DataGridViewEditMode.EditProgrammatically;
-            dGVSubjects.EditMode = DataGridViewEditMode.EditProgrammatically;
+            dgvSubjects.EditMode = DataGridViewEditMode.EditProgrammatically;
         }
 
 
@@ -88,11 +91,11 @@ namespace Dziekanat.UI.Desktop
         }
 
         private void dataGridView1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
-        {
-            if (sender != null)
+        {   var dgv = sender as DataGridView;  
+            if (dgv != null)
             {
-                dgvStudents.EditingControl.KeyPress -= EditingControl_KeyPress;
-                dgvStudents.EditingControl.KeyPress += EditingControl_KeyPress;
+                dgv.EditingControl.KeyPress -= EditingControl_KeyPress;
+                dgv.EditingControl.KeyPress += EditingControl_KeyPress;
             }
 
         }
@@ -111,18 +114,15 @@ namespace Dziekanat.UI.Desktop
                 case "dgvStudents3":
                     e.Handled = !_controller.IsPESEL(editingControl.Text + e.KeyChar);
                     break;
-                case "dgvSubjects1":
+                case "dGVSubjects1":
                     e.Handled = !_controller.IsString(editingControl.Text + e.KeyChar);
                     break;
-                case "dgvSubjects2":
+                case "dGVSubjects2":
                     e.Handled = !_controller.IsSemester(editingControl.Text + e.KeyChar);
                     break;
-                case "dgvSubjects3":
-                    e.Handled = !_controller.IsPESEL(editingControl.Text + e.KeyChar);
-                    break;
-                case "dgvSubjects4":
+                case "dGVSubjects3":
                     e.Handled = !_controller.IsString(editingControl.Text + e.KeyChar);
-                    break;
+                    break;              
                 default:
                     break;
             }
@@ -131,24 +131,21 @@ namespace Dziekanat.UI.Desktop
 
         private void btnStudents_Click(object sender, EventArgs e)
         {
-            pnlStudents.Visible = true;
             pnlSubjects.Visible = false;
-
+            pnlStudents.Visible = true;
             dgvStudents.DataSource = _controller.GetAllStudents();
         }
 
         private void btnSubjects_Click(object sender, EventArgs e)
         {
-            //   PnlVisibility();
-            pnlSubjects.Visible = true;
             pnlStudents.Visible = false;
-
-            dGVSubjects.DataSource = _controller.GetAllSubjects();
+            pnlSubjects.Visible = true;
+            dgvSubjects.DataSource = _controller.GetAllSubjects();
         }
 
         private void btnAddStudent_Click(object sender, EventArgs e)
         {
-            dgvStudents.DataSource = _controller.AddEmptyRow();
+            dgvStudents.DataSource = _controller.AddEmptyRowStudent();
 
             SelectEtidedRow(dgvStudents);
             BeginEdit(dgvStudents, 1);
@@ -163,7 +160,10 @@ namespace Dziekanat.UI.Desktop
 
         private void btnAddSubject_Click(object sender, EventArgs e)
         {
+            dgvSubjects.DataSource = _controller.AddEmptyRowSubject();
 
+            SelectEtidedRow(dgvSubjects);
+            BeginEdit(dgvSubjects, 1);
         }
 
 
@@ -176,13 +176,26 @@ namespace Dziekanat.UI.Desktop
         {
 
             var selectedRow = dgv.Rows[dgv.Rows.Count - 1];
-
-            _controller.AddStudent(new Student()
+            if (dgv == dgvStudents)
             {
-                Name = selectedRow.Cells[1].Value.ToString(),
-                SurName = selectedRow.Cells[2].Value.ToString(),
-                PESEL = Convert.ToInt64(selectedRow.Cells[3].Value)
-            });
+                _controller.AddStudent(new Student()
+                {
+                    Name = selectedRow.Cells[1].Value.ToString(),
+                    SurName = selectedRow.Cells[2].Value.ToString(),
+                    PESEL = Convert.ToInt64(selectedRow.Cells[3].Value)
+                });
+            }
+
+            if (dgv == dgvSubjects)
+            {
+                _controller.AddSubject(new Subject()
+                {
+                    SubjectName = selectedRow.Cells[1].Value.ToString(),
+                    Semester = Convert.ToInt32(selectedRow.Cells[2].Value),
+                    Lecturer = selectedRow.Cells[3].Value.ToString(),
+                });
+            }
+
             dgv.Refresh();
 
         }
@@ -192,12 +205,12 @@ namespace Dziekanat.UI.Desktop
             ;
             if (dgv.Columns.Count > column)
             {
-                DataGridViewCell cell = dgvStudents.Rows[dgv.Rows.Count - 1].Cells[column];
+                DataGridViewCell cell = dgv.Rows[dgv.Rows.Count - 1].Cells[column];
 
                 SetEditableInfo(dgv, column);
 
-                dgvStudents.CurrentCell = cell;
-                dgvStudents.BeginEdit(true);
+                dgv.CurrentCell = cell;
+                dgv.BeginEdit(true);
                 return false;
             }
             return true;
@@ -211,8 +224,8 @@ namespace Dziekanat.UI.Desktop
         private void SelectEtidedRow(DataGridView dgv)
         {
             dgv.ClearSelection();
-            dgvStudents.Rows[dgv.Rows.Count - 1].Selected = true;
-            dgvStudents.FirstDisplayedScrollingRowIndex = dgv.Rows.Count - 1;
+            dgv.Rows[dgv.Rows.Count - 1].Selected = true;
+            dgv.FirstDisplayedScrollingRowIndex = dgv.Rows.Count - 1;
         }
         #endregion
 

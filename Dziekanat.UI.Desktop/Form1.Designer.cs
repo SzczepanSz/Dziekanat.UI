@@ -34,18 +34,17 @@
             this.pnlSubjects = new System.Windows.Forms.Panel();
             this.btnDeleteSubject = new System.Windows.Forms.Button();
             this.btnAddSubject = new System.Windows.Forms.Button();
-            this.dGVSubjects = new System.Windows.Forms.DataGridView();
+            this.dgvSubjects = new System.Windows.Forms.DataGridView();
             this.pnlStudents = new System.Windows.Forms.Panel();
             this.btnDeleteStudent = new System.Windows.Forms.Button();
             this.btnAddStudent = new System.Windows.Forms.Button();
             this.dgvStudents = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.pnlSubjects.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dGVSubjects)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSubjects)).BeginInit();
             this.pnlStudents.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).BeginInit();
             this.SuspendLayout();
@@ -64,7 +63,6 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.panel1);
             this.splitContainer1.Panel2.Controls.Add(this.pnlSubjects);
             this.splitContainer1.Panel2.Controls.Add(this.pnlStudents);
             this.splitContainer1.Size = new System.Drawing.Size(800, 450);
@@ -97,7 +95,7 @@
             // 
             this.pnlSubjects.Controls.Add(this.btnDeleteSubject);
             this.pnlSubjects.Controls.Add(this.btnAddSubject);
-            this.pnlSubjects.Controls.Add(this.dGVSubjects);
+            this.pnlSubjects.Controls.Add(this.dgvSubjects);
             this.pnlSubjects.Location = new System.Drawing.Point(183, 3);
             this.pnlSubjects.Name = "pnlSubjects";
             this.pnlSubjects.Size = new System.Drawing.Size(176, 414);
@@ -124,12 +122,12 @@
             // 
             // dGVSubjects
             // 
-            this.dGVSubjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dGVSubjects.Location = new System.Drawing.Point(3, 3);
-            this.dGVSubjects.Name = "dGVSubjects";
-            this.dGVSubjects.RowTemplate.Height = 25;
-            this.dGVSubjects.Size = new System.Drawing.Size(240, 150);
-            this.dGVSubjects.TabIndex = 0;
+            this.dgvSubjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSubjects.Location = new System.Drawing.Point(3, 3);
+            this.dgvSubjects.Name = "dGVSubjects";
+            this.dgvSubjects.RowTemplate.Height = 25;
+            this.dgvSubjects.Size = new System.Drawing.Size(240, 150);
+            this.dgvSubjects.TabIndex = 0;
             // 
             // pnlStudents
             // 
@@ -170,13 +168,6 @@
             this.dgvStudents.Size = new System.Drawing.Size(240, 150);
             this.dgvStudents.TabIndex = 0;
             // 
-            // panel1
-            // 
-            this.panel1.Location = new System.Drawing.Point(365, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 415);
-            this.panel1.TabIndex = 2;
-            // 
             // BaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -190,7 +181,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.pnlSubjects.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dGVSubjects)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSubjects)).EndInit();
             this.pnlStudents.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).EndInit();
             this.ResumeLayout(false);
@@ -205,12 +196,11 @@
         private Button btnStudents;
         private Panel pnlSubjects;
         private Panel pnlStudents;
-        private DataGridView dGVSubjects;
+        private DataGridView dgvSubjects;
         private DataGridView dgvStudents;
         private Button btnDeleteSubject;
         private Button btnAddSubject;
         private Button btnDeleteStudent;
         private Button btnAddStudent;
-        private Panel panel1;
     }
 }
