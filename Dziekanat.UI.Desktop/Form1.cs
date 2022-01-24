@@ -82,7 +82,6 @@ namespace Dziekanat.UI.Desktop
                 else if (dgvEdited != null)
                 {
                     SaveLastRow(sender as DataGridView);
-
                 }
             }
             catch (Exception)
