@@ -16,4 +16,3 @@ namespace Dziekanat.DAL.Models
         public string Lecturer { get; set; }
     }
 }
-//nazwa przedmiotu, semestr studiów, imię i nazwisko prowadzącego

@@ -57,14 +57,12 @@ namespace Dziekanat.Controller
 
         public List<Student> AddEmptyRowStudent()
         {
-         //   Student emptyStudent = new Student();
             var tempList = _dbcontextfactory.GetAllStudents();
             tempList.Add(new Student());
             return tempList; 
         }
         public List<Subject> AddEmptyRowSubject()
         {
-            //   Student emptyStudent = new Student();
             var tempList = _dbcontextfactory.GetAllSubject();
             tempList.Add(new Subject());
             return tempList;
@@ -93,6 +91,3 @@ namespace Dziekanat.Controller
         }
     }
 }
-//parts.Add(new Part() { PartName = "crank arm", PartId = 1234 });
-
-//new Student { IdStudent = 1, Name = "", SurName = "", PESEL = 00 }

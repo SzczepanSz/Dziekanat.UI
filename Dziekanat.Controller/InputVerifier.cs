@@ -19,8 +19,6 @@ namespace Dziekanat.Controller
 
         private string patternSemester = "^[0-9]+$";
 
-      //  private string patternLong = @"\b\d+\,\d{3}\b";
-       private string patternLong = @"\bthe\w*\b";
 
 
         public bool IsString(string text)
@@ -46,4 +44,3 @@ namespace Dziekanat.Controller
 }
 
 
-//"^[0-9]{0,2}$"
